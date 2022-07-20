@@ -1,5 +1,7 @@
 # MI8 导出微信聊天记录
 
+> 参考文章：[小米 6 提取微信聊天记录笔记](https://github.com/Heyxk/notes/blob/master/notes/%E5%B0%8F%E7%B1%B3%E6%89%8B%E6%9C%BA%E6%8F%90%E5%8F%96%E5%BE%AE%E4%BF%A1%E8%81%8A%E5%A4%A9%E8%AE%B0%E5%BD%95%E6%95%B0%E6%8D%AE%E5%BA%93.md)
+
 ## 通过手机数据备份提取聊天记录
 
 1. 使用手机数据备份功能，导出微信数据
@@ -54,16 +56,16 @@ The Key is : *******  # 这将会是你的数据库key密码
 
 ## 解密数据库
 
-Linux用户可以使用`sqlcipher`来解密：
+Linux 用户可以使用`sqlcipher`来解密：
 
 ```bash
 sudo apt-get update
 sudo apt-get install sqlcipher
-sqlcipher EnMicroMsg.db 'PRAGMA key = "你的key密码"; PRAGMA cipher_use_hmac = off; PRAGMA kdf_iter = 4000; ATTACH DATABASE "decrypted_database.db" AS decrypted_database KEY "";SELECT sqlcipher_export("decrypted_database");DETACH DATABASE decrypted_database;' 
+sqlcipher EnMicroMsg.db 'PRAGMA key = "你的key密码"; PRAGMA cipher_use_hmac = off; PRAGMA kdf_iter = 4000; ATTACH DATABASE "decrypted_database.db" AS decrypted_database KEY "";SELECT sqlcipher_export("decrypted_database");DETACH DATABASE decrypted_database;'
 ```
 
 执行上面的命令之后会得到一个解密后的数据库`decrypted_database.db`，可以使用数据库软件查看
 
 ---
 
-得到数据库之后可以分析一下你的聊天记录，顺便制作一个词云来给你的心上人看一下你们都聊了啥:eyes:
+得到数据库之后可以分析一下你的聊天记录了~~~
